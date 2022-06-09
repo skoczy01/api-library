@@ -1,0 +1,93 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+
+  @media (max-width: 1023px) {
+    flex-direction: column;
+  }
+}
+
+body {
+  background-color: #2d3436;
+  background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.local-search {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 55%;
+  height: 85vh;
+  overflow-y: hidden;
+
+  @media (min-width: 1024px) {
+    border-right: 2px solid #444;
+  }
+  @media (min-width: 1920px) {
+    height: 100%;
+  }
+}
+
+.google-search {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 45%;
+  height: 85vh;
+  overflow-y: hidden;
+  color: white;
+
+  label {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  input {
+    background-color: transparent;
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 3px 5px;
+    color: white;
+  }
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: none;
+    border: 3px solid #333;
+  }
+
+  @media (min-width: 1920px) {
+    height: 100vh;
+  }
+}
+
+h2 {
+  color: white;
+}
+
+.error {
+  color: white;
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.notfound {
+  color: rebeccapurple;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #1e2324;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

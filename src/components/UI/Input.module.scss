@@ -1,0 +1,40 @@
+.inputBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+  width: 310px;
+  color: #ddd;
+
+  label {
+    font-weight: bold;
+    margin: 0 10px;
+  }
+  input {
+    background-color: transparent;
+    border: 3px solid #aaa;
+    border-radius: 10px;
+    padding: 3px 5px;
+    color: white;
+  }
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+    outline: none;
+    border: 3px solid #333;
+  }
+  input:disabled {
+    border: 3px solid rgb(82, 77, 77);
+    background-color: rgb(82, 77, 77);
+    &:hover {
+      cursor: no-drop;
+    }
+    &::placeholder {
+      color: #ddd;
+    }
+  }
+}

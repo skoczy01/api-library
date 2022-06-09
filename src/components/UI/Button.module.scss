@@ -1,0 +1,23 @@
+.submit {
+  width: 100px;
+  height: 40px;
+  max-height: 50px;
+  margin: 10px 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 15px;
+  border-style: none;
+  // border: 3px solid #111;
+  background-color: rgb(160, 27, 183);
+  box-shadow: 0px 0px 3px 3px rgb(160, 27, 183);
+  color: white;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    box-shadow: 0px 0px 3px 3px #fff;
+
+    color: black;
+  }
+}
