@@ -61,7 +61,7 @@ export default function LocalLibary(props) {
     return title.includes(filterName);
   });
   return (
-    <div>
+    <div className={props.className}>
       <h2>Local Books</h2>
       <Form onSubmit={onValidateFormHandler}>
         <Input

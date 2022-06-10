@@ -47,10 +47,16 @@ export default function ApiBooks(props) {
       </li>
       <Button
         onClick={() => {
-          const title = book.volumeInfo.title;
-          const author = book.volumeInfo.authors;
-          const category = book.volumeInfo.categories;
-          const description = book.volumeInfo.description;
+          const title = book.volumeInfo.title ? book.volumeInfo.title : "";
+          const author = book.volumeInfo.authors
+            ? book.volumeInfo.authors[0]
+            : "";
+          const category = book.volumeInfo.categories
+            ? book.volumeInfo.categories[0]
+            : "";
+          const description = book.volumeInfo.description
+            ? book.volumeInfo.description
+            : "";
           const date = book.volumeInfo.publishedDate;
           const image = book.volumeInfo.imageLinks.thumbnail;
           const link = book.volumeInfo.canonicalVolumeLink;

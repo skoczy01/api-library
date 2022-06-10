@@ -29,8 +29,8 @@ function App() {
   ]);
   return (
     <div className="App">
-      <LocalLibary books={books} setBooks={setBooks} />
-      <ApiLibary books={books} setBooks={setBooks} />
+      <LocalLibary books={books} setBooks={setBooks} className="local-libary" />
+      <ApiLibary books={books} setBooks={setBooks} className="api-libary" />
     </div>
   );
 }

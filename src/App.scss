@@ -1,0 +1,50 @@
+#root {
+  padding: 0;
+  margin: 0;
+}
+html,
+body,
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .local-libary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 1024px) {
+      flex-basis: 60%;
+    }
+    @media (min-width: 1440px) {
+      flex-basis: 65%;
+    }
+  }
+  .api-libary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: 1024px) {
+      flex-basis: 40%;
+    }
+    @media (min-width: 1440px) {
+      flex-basis: 35%;
+    }
+  }
+}

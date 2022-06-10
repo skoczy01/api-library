@@ -1,5 +1,5 @@
 import React from "react";
-import BookCard from "../BookCard";
+import BookCard from "../../Card/BookCard";
 import classes from "./LocalLibaryItems.module.scss";
 export default function LocalLibaryItems(props) {
   const notFound = <span className={classes.notfound}>Not entered</span>;
@@ -18,5 +18,5 @@ export default function LocalLibaryItems(props) {
       deleteHandler={props.deleteHandler}
     />
   ));
-  return <div className="container"> {booksListRender}</div>;
+  return <div className={classes["card-container"]}> {booksListRender}</div>;
 }

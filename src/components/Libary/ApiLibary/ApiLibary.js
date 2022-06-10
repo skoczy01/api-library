@@ -23,6 +23,7 @@ export default function ApiLibary(props) {
           (result) => {
             setBooksFromApi(result.items);
             setApiError("");
+            console.log(result.items);
           },
           (error) => {
             return error;
@@ -59,7 +60,7 @@ export default function ApiLibary(props) {
     setBooksFromApi(booksFromApi.filter((book) => book.id !== id));
   };
   return (
-    <div>
+    <div className={props.className}>
       <h2>Search GoogleBooks</h2>
       <Form onSubmit={onSubmitApiSearchHandler}>
         <Input
@@ -71,7 +72,7 @@ export default function ApiLibary(props) {
             setSearchValue(event.target.value);
           }}
         >
-          Please enter a title or key word
+          Enter a title
         </Input>
         <Button type="submit">Search</Button>
       </Form>

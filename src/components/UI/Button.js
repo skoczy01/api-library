@@ -4,7 +4,7 @@ export default function Button(props) {
     <button
       type={props.type}
       onClick={props.onClick}
-      className={classes.submit}
+      className={props.className ? props.className : classes.submit}
     >
       {props.children}
     </button>
