@@ -1,50 +1,25 @@
 import React from "react";
 import Button from "../../UI/Button";
-import classes from "./ApiBooks.module.scss";
+import classes from "../Card/BookCard.module.scss";
+import BookCard from "../Card/BookCard";
 export default function ApiBooks(props) {
   const notFound = <span className={classes.notfound}>Not entered</span>;
   const booksListRender = props.apiResult.map((book) => (
-    <ul key={book.id} className={classes.list}>
-      <a href={book.volumeInfo.canonicalVolumeLink}>
-        <img
-          src={book.volumeInfo.imageLinks.thumbnail}
-          alt="img"
-          width="50px"
-          height="70px"
-        />
-      </a>
-      <li>
-        Book title :{" "}
-        <span>{book.volumeInfo.title ? book.volumeInfo.title : notFound}</span>
-      </li>
-      <li>
-        Book author :
-        <span>
-          {book.volumeInfo.authors ? book.volumeInfo.authors : notFound}
-        </span>
-      </li>
-      <li>
-        Categories:
-        <span>
-          {book.volumeInfo.categories ? book.volumeInfo.categories : notFound}
-        </span>
-      </li>
-      <div>
-        Book description:
-        {book.volumeInfo.description ? (
-          <p className={classes.description}>{book.volumeInfo.description}</p>
-        ) : (
-          notFound
-        )}
-      </div>
-      <li>
-        Book published Date :{" "}
-        <span>
-          {book.volumeInfo.publishedDate
-            ? book.volumeInfo.publishedDate
-            : notFound}
-        </span>
-      </li>
+    <BookCard
+      key={book.id}
+      id={book.id}
+      className={classes.container}
+      title={book.volumeInfo.title}
+      author={book.volumeInfo.authors ? book.volumeInfo.authors[0] : ""}
+      category={book.volumeInfo.categories ? book.volumeInfo.categories[0] : ""}
+      link={book.volumeInfo.canonicalVolumeLink}
+      image={book.volumeInfo.imageLinks.thumbnail}
+      description={
+        book.volumeInfo.description ? book.volumeInfo.description : ""
+      }
+      publishedDate={book.volumeInfo.publishedDate}
+      name="api"
+    >
       <Button
         onClick={() => {
           const title = book.volumeInfo.title ? book.volumeInfo.title : "";
@@ -75,7 +50,7 @@ export default function ApiBooks(props) {
       >
         Add to local libary
       </Button>
-    </ul>
+    </BookCard>
   ));
-  return <div className={classes.apicontener}> {booksListRender}</div>;
+  return <div className={classes["api-cont"]}> {booksListRender}</div>;
 }

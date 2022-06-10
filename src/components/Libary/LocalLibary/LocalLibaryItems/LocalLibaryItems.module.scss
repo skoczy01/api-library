@@ -4,6 +4,14 @@
   justify-content: center;
   width: 100%;
 
+  @media (max-width: 1023px) {
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  @media (min-width: 1024px) {
+    max-height: 800px;
+    overflow-y: scroll;
+  }
   @media (min-width: 1440px) {
     justify-content: flex-start;
   }

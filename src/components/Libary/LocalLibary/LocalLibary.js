@@ -32,6 +32,7 @@ export default function LocalLibary(props) {
         author: authorName,
         publishedDate: publishedDate,
         category: categoryValue,
+        description: descriptionValue,
       },
     ]);
     return clearAllInputValues();

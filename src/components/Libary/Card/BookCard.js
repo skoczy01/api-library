@@ -58,7 +58,9 @@ export default function BookCard(props) {
         >
           Remove
         </Button>
-      ) : null}
+      ) : (
+        props.children
+      )}
     </div>
   );
 }
