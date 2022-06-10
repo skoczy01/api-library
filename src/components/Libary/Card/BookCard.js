@@ -50,13 +50,15 @@ export default function BookCard(props) {
           )}
         </li>
       </ul>
-      <Button
-        onClick={() => {
-          props.deleteHandler(props.id);
-        }}
-      >
-        Remove
-      </Button>
+      {props.name === "local" ? (
+        <Button
+          onClick={() => {
+            props.deleteHandler(props.id);
+          }}
+        >
+          Remove
+        </Button>
+      ) : null}
     </div>
   );
 }

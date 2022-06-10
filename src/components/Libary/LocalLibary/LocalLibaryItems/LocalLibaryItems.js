@@ -2,7 +2,6 @@ import React from "react";
 import BookCard from "../../Card/BookCard";
 import classes from "./LocalLibaryItems.module.scss";
 export default function LocalLibaryItems(props) {
-  const notFound = <span className={classes.notfound}>Not entered</span>;
   const booksListRender = props.books.map((book) => (
     <BookCard
       key={book.id}
@@ -16,6 +15,7 @@ export default function LocalLibaryItems(props) {
       description={book.description}
       publishedDate={book.publishedDate}
       deleteHandler={props.deleteHandler}
+      name="local"
     />
   ));
   return <div className={classes["card-container"]}> {booksListRender}</div>;
