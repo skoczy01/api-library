@@ -1,32 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import LocalLibaryItems from "./LocalLibaryItems/LocalLibaryItems";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import Form from "../../UI/Form";
-export default function LocalLibary() {
-  const [books, setBooks] = useState([
-    {
-      id: 0,
-      image: "",
-      title: "Harry Potter",
-      author: "J.K. Rowling",
-      publishedDate: "2018",
-      category: "Fantasy literature",
-      description:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consequatur maiores vero deleniti, eius animi laboriosam quo perspiciatis reprehenderit vitae, molestias magni debitis cum necessitatibus nam quisquam veniam quam deserunt ipsa, quibusdam obcaecati a suscipit neque non? Repellat architecto, quas dicta saepe suscipit numquam temporibus cum facilis hic quidem vitae quae.",
-      link: "",
-    },
-    {
-      id: 1,
-      image: "",
-      title: "This Time Tomorrow",
-      author: "Emma Straub",
-      publishedDate: "2018",
-      category: "Women's Fiction",
-      description: "",
-      link: "",
-    },
-  ]);
+export default function LocalLibary(props) {
   const [titleName, setTitleName] = useState("");
   const [authorName, setAuthorName] = useState("");
   const [publishedDate, setPublishedDate] = useState("");
@@ -47,10 +24,10 @@ export default function LocalLibary() {
   };
   //Update array after submit
   const onSubmitFormHandler = () => {
-    setBooks((prev) => [
+    props.setBooks((prev) => [
       ...prev,
       {
-        id: books.length,
+        id: props.books.length,
         title: titleName,
         author: authorName,
         publishedDate: publishedDate,
@@ -76,10 +53,10 @@ export default function LocalLibary() {
   };
   //Delete item function
   const deleteHandler = (id) => {
-    setBooks(books.filter((book) => book.id !== id));
+    props.setBooks(props.books.filter((book) => book.id !== id));
   };
   //Filter items function
-  const filtersItems = books.filter((book) => {
+  const filtersItems = props.books.filter((book) => {
     const title = book.title.toLowerCase();
     return title.includes(filterName);
   });
@@ -143,17 +120,19 @@ export default function LocalLibary() {
           onInputChange={(event) =>
             setFilterName(event.target.value.toLowerCase())
           }
-          placeholder={books.length ? "Search by title" : "Libary is empty"}
-          disabled={books.length ? false : true}
+          placeholder={
+            props.books.length ? "Search by title" : "Libary is empty"
+          }
+          disabled={props.books.length ? false : true}
         >
           Filter Book
         </Input>
       </Form>
 
-      {books.length ? (
+      {props.books.length ? (
         <LocalLibaryItems books={filtersItems} deleteHandler={deleteHandler} />
       ) : (
-        <p className="notfound">Not found any book, maby add some?</p>
+        <p>Not found any book, maby add some?</p>
       )}
     </div>
   );

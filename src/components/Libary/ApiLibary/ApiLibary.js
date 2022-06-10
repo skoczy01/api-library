@@ -59,11 +59,10 @@ export default function ApiLibary(props) {
     setBooksFromApi(booksFromApi.filter((book) => book.id !== id));
   };
   return (
-    <div className="google-search">
-      <h2>Google Search Books</h2>
+    <div>
+      <h2>Search GoogleBooks</h2>
       <Form onSubmit={onSubmitApiSearchHandler}>
         <Input
-          className="test"
           type="text"
           id="searchbook"
           initialValue={searchValue}
@@ -72,15 +71,13 @@ export default function ApiLibary(props) {
             setSearchValue(event.target.value);
           }}
         >
-          Search data from GoogleBooks
+          Please enter a title or key word
         </Input>
         <Button type="submit">Search</Button>
       </Form>
-      {apiError ? <p className="error">{apiError}</p> : null}
+      {apiError ? <p>{apiError}</p> : null}
       {!booksFromApi ? (
-        <p className="notfound">
-          Cannot find your entered title, please try again
-        </p>
+        <p>Cannot find your entered title, please try again</p>
       ) : (
         <ApiBrowser
           apiResult={booksFromApi}
