@@ -1,5 +1,5 @@
 import classes from "./Button.module.scss";
-export default function Button(props) {
+export function Button(props) {
   return (
     <button
       type={props.type}

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Form from "../../UI/Form";
-import Button from "../../UI/Button";
-import Input from "../../UI/Input";
-import ApiBrowser from "./ApiItems";
-export default function ApiLibary(props) {
+import { Form } from "../../UI/Form";
+import { Button } from "../../UI/Button";
+import { Input } from "../../UI/Input";
+import { BrowserItems } from "./BrowserItems";
+export function BrowserLibrary(props) {
   //Api state's
   const [apiError, setApiError] = useState("");
   const [booksFromApi, setBooksFromApi] = useState([]);
@@ -11,8 +11,8 @@ export default function ApiLibary(props) {
   //Search by entered value by API
   const onSubmitApiSearchHandler = (event) => {
     event.preventDefault();
-    const API_KEY = "AIzaSyBYvbIypkRkXOADFpZ_nBrFN9jkqD3bngw";
-    const API_FETCH = `https://books.googleapis.com/books/v1/volumes?q=${searchValue}&download=DOWNLOAD_UNDEFINED&filter=ebooks&langRestrict=pl&libraryRestrict=no-restrict&maxAllowedMaturityRating=MATURE&maxResults=15&orderBy=relevance&printType=BOOKS&projection=FULL&key=${API_KEY}`;
+
+    const API_FETCH = `https://books.googleapis.com/books/v1/volumes?q=${searchValue}&download=DOWNLOAD_UNDEFINED&filter=ebooks&langRestrict=pl&libraryRestrict=no-restrict&maxAllowedMaturityRating=MATURE&maxResults=15&orderBy=relevance&printType=BOOKS&projection=FULL&key=${process.env.REACT_APP_API_KEY}`;
 
     if (!searchValue) {
       return setApiError("This input cant be empty!");
@@ -80,7 +80,7 @@ export default function ApiLibary(props) {
       {!booksFromApi ? (
         <p>Cannot find your entered title, please try again</p>
       ) : (
-        <ApiBrowser
+        <BrowserItems
           apiResult={booksFromApi}
           onAdd={addBookFromApiToLocalBooks}
         />

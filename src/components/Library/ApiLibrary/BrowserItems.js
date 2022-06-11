@@ -1,14 +1,13 @@
 import React from "react";
-import Button from "../../UI/Button";
+import { Button } from "../../UI/Button";
 import classes from "../Card/BookCard.module.scss";
-import BookCard from "../Card/BookCard";
-export default function ApiBooks(props) {
-  const notFound = <span className={classes.notfound}>Not entered</span>;
+import { BookCard } from "../Card/BookCard";
+export function BrowserItems(props) {
   const booksListRender = props.apiResult.map((book) => (
     <BookCard
       key={book.id}
-      id={book.id}
       className={classes.container}
+      id={book.id}
       title={book.volumeInfo.title}
       author={book.volumeInfo.authors ? book.volumeInfo.authors[0] : ""}
       category={book.volumeInfo.categories ? book.volumeInfo.categories[0] : ""}
@@ -19,6 +18,7 @@ export default function ApiBooks(props) {
       }
       publishedDate={book.volumeInfo.publishedDate}
       name="api"
+      book={book.volumeInfo}
     >
       <Button
         onClick={() => {

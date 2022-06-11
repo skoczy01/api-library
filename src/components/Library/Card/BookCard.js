@@ -1,12 +1,32 @@
 import React from "react";
-import Button from "../../UI/Button";
+import { Button } from "../../UI/Button";
 import classes from "./BookCard.module.scss";
 const initialImage =
   "http://books.google.com/books/content?id=Nd1bAAAAcAAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api";
 const notEnteredValue = (
   <span className={classes["not-entered"]}>Not entered</span>
 );
-export default function BookCard(props) {
+export function BookCard(props) {
+  // if (props.name === "api") {
+  //   const book = props.book;
+  //   const title = book.title;
+  //   const author = book.author;
+  //   const category = book.category;
+  //   const description = book.description;
+  //   const publishedDate = book.publishedDate;
+  //   const link = book.link;
+  //   const image = book.image;
+  // } else {
+  //   const book = props.book;
+  //   const title = book.title;
+  //   const author = book.author;
+  //   const category = book.category;
+  //   const description = book.description;
+  //   const publishedDate = book.publishedDate;
+  //   const link = book.link;
+  //   const image = book.image;
+  // }
+
   return (
     <div className={classes.card}>
       <div className={classes["first-section"]}>

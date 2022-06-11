@@ -1,7 +1,7 @@
 import React from "react";
-import BookCard from "../../Card/BookCard";
+import { BookCard } from "../../Card/BookCard";
 import classes from "./LocalLibaryItems.module.scss";
-export default function LocalLibaryItems(props) {
+export function LocalLibraryItems(props) {
   const booksListRender = props.books.map((book) => (
     <BookCard
       key={book.id}

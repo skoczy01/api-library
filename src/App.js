@@ -1,7 +1,7 @@
-import React, { useState, useEffect, createContext, useReducer } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.scss";
-import ApiLibary from "./components/Libary/ApiLibary/ApiLibary";
-import LocalLibary from "./components/Libary/LocalLibary/LocalLibary";
+import { BrowserLibrary } from "./components/Library/ApiLibrary/BrowserLibrary";
+import { LocalLibrary } from "./components/Library/LocalLibrary/LocalLibrary";
 
 const initialBooks = [
   {
@@ -26,7 +26,7 @@ const initialBooks = [
     link: "",
   },
 ];
-function App() {
+export function App() {
   const [books, setBooks] = useState(() => {
     const localData = localStorage.getItem("books");
     return localData ? JSON.parse(localData) : initialBooks;
@@ -36,10 +36,16 @@ function App() {
   }, [books]);
   return (
     <div className="App">
-      <LocalLibary books={books} setBooks={setBooks} className="local-libary" />
-      <ApiLibary books={books} setBooks={setBooks} className="api-libary" />
+      <LocalLibrary
+        books={books}
+        setBooks={setBooks}
+        className="local-libary"
+      />
+      <BrowserLibrary
+        books={books}
+        setBooks={setBooks}
+        className="api-libary"
+      />
     </div>
   );
 }
-
-export default App;

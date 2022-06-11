@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import LocalLibaryItems from "./LocalLibaryItems/LocalLibaryItems";
-import Input from "../../UI/Input";
-import Button from "../../UI/Button";
-import Form from "../../UI/Form";
-import classes from "./LocalLibary.module.scss";
-export default function LocalLibary(props) {
+import { LocalLibraryItems } from "./LocalLibraryItems/LocalLibraryItems";
+import { Input } from "../../UI/Input";
+import { Button } from "../../UI/Button";
+import { Form } from "../../UI/Form";
+import classes from "./LocalLibrary.module.scss";
+export function LocalLibrary(props) {
   const [titleName, setTitleName] = useState("");
   const [authorName, setAuthorName] = useState("");
   const [publishedDate, setPublishedDate] = useState("");
@@ -127,7 +127,7 @@ export default function LocalLibary(props) {
             setFilterName(event.target.value.toLowerCase())
           }
           placeholder={
-            props.books.length ? "Search by title" : "Libary is empty"
+            props.books.length ? "Search by title" : "Library is empty"
           }
           disabled={props.books.length ? false : true}
         >
@@ -136,7 +136,7 @@ export default function LocalLibary(props) {
       </Form>
       {errorValue ? errorValue : null}
       {props.books.length ? (
-        <LocalLibaryItems books={filtersItems} deleteHandler={deleteHandler} />
+        <LocalLibraryItems books={filtersItems} deleteHandler={deleteHandler} />
       ) : (
         <p>Not found any book, maby add some?</p>
       )}
