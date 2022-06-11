@@ -21,6 +21,7 @@ ul {
 
   h2 {
     text-align: center;
+    color: saddlebrown;
   }
 
   .local-libary {
@@ -44,6 +45,9 @@ ul {
     }
     @media (min-width: 1440px) {
       flex-basis: 35%;
+    }
+    h2 {
+      color: rgb(160, 27, 183);
     }
   }
 }

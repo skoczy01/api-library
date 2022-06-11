@@ -87,3 +87,27 @@ span.not-entered {
     overflow-y: scroll;
   }
 }
+
+.card-btn {
+  align-self: center;
+  width: 100px;
+  height: 30px;
+  max-height: 50px;
+  margin: 10px 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 15px;
+  border-style: none;
+  background-color: saddlebrown;
+  box-shadow: 0px 0px 3px 3px black;
+  color: white;
+  transition: 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: white;
+    box-shadow: 0px 0px 3px 3px #bbb;
+
+    color: black;
+  }
+}

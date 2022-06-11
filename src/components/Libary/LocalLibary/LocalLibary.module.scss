@@ -1,16 +1,15 @@
-.submit {
+.form-btn {
   align-self: center;
   width: 100px;
-  height: 40px;
+  height: 35px;
   max-height: 50px;
   margin: 10px 0;
   font-size: 0.9rem;
   font-weight: bold;
   border-radius: 15px;
   border-style: none;
-  // border: 3px solid #111;
-  background-color: rgb(160, 27, 183);
-  box-shadow: 0px 0px 3px 3px rgb(160, 27, 183);
+  background-color: saddlebrown;
+  box-shadow: 0px 0px 3px 3px saddlebrown;
   color: white;
   transition: 0.2s;
   cursor: pointer;
