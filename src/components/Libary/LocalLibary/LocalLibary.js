@@ -134,7 +134,7 @@ export default function LocalLibary(props) {
           Filter Book
         </Input>
       </Form>
-
+      {errorValue ? errorValue : null}
       {props.books.length ? (
         <LocalLibaryItems books={filtersItems} deleteHandler={deleteHandler} />
       ) : (
