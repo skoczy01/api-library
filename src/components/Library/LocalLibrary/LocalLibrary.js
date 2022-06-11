@@ -10,11 +10,8 @@ export function LocalLibrary(props) {
   const [publishedDate, setPublishedDate] = useState("");
   const [categoryValue, setCategoryValue] = useState("");
   const [descriptionValue, setDescriptionValue] = useState("");
-  // Filter state
   const [filterName, setFilterName] = useState("");
-  //error state for 1st section
   const [errorValue, setErrorValue] = useState(null);
-  //Cleaning function after submit
 
   const clearAllInputValues = () => {
     setTitleName("");
@@ -24,7 +21,6 @@ export function LocalLibrary(props) {
     setDescriptionValue("");
     setErrorValue("");
   };
-  //Update array after submit
   const onSubmitFormHandler = () => {
     props.setBooks((prev) => [
       ...prev,
@@ -40,7 +36,6 @@ export function LocalLibrary(props) {
     ]);
     return clearAllInputValues();
   };
-  //Validate form and add new item
   const onValidateFormHandler = (event) => {
     event.preventDefault();
     if (
@@ -55,11 +50,9 @@ export function LocalLibrary(props) {
       onSubmitFormHandler();
     }
   };
-  //Delete item function
   const deleteHandler = (id) => {
     props.setBooks(props.books.filter((book) => book.id !== id));
   };
-  //Filter items function
   const filtersItems = props.books.filter((book) => {
     const title = book.title.toLowerCase();
     return title.includes(filterName);

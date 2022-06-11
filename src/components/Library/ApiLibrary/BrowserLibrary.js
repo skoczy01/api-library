@@ -4,11 +4,9 @@ import { Button } from "../../UI/Button";
 import { Input } from "../../UI/Input";
 import { BrowserItems } from "./BrowserItems";
 export function BrowserLibrary(props) {
-  //Api state's
   const [apiError, setApiError] = useState("");
   const [booksFromApi, setBooksFromApi] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  //Search by entered value by API
   const onSubmitApiSearchHandler = (event) => {
     event.preventDefault();
 
@@ -32,7 +30,6 @@ export function BrowserLibrary(props) {
     }
     setSearchValue("");
   };
-  //Add item from API to local Libary
   const addBookFromApiToLocalBooks = (
     title,
     author,
@@ -56,7 +53,6 @@ export function BrowserLibrary(props) {
         description: description,
       },
     ]);
-    //Delete added book from api to local
     setBooksFromApi(booksFromApi.filter((book) => book.id !== id));
   };
   return (
