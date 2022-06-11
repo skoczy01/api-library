@@ -34,6 +34,9 @@ ul {
     @media (min-width: 1440px) {
       flex-basis: 65%;
     }
+    @media (max-width: 1023px) {
+      margin-bottom: 2rem;
+    }
   }
   .api-libary {
     display: flex;
@@ -45,6 +48,9 @@ ul {
     }
     @media (min-width: 1440px) {
       flex-basis: 35%;
+    }
+    @media (max-width: 1023px) {
+      border-top: 5px solid rgb(160, 27, 183);
     }
     h2 {
       color: rgb(160, 27, 183);
