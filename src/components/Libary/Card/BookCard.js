@@ -52,6 +52,7 @@ export default function BookCard(props) {
       </ul>
       {props.name === "local" ? (
         <Button
+          className={classes["card-btn"]}
           onClick={() => {
             props.deleteHandler(props.id);
           }}

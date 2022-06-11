@@ -3,6 +3,7 @@ import LocalLibaryItems from "./LocalLibaryItems/LocalLibaryItems";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button";
 import Form from "../../UI/Form";
+import classes from "./LocalLibary.module.scss";
 export default function LocalLibary(props) {
   const [titleName, setTitleName] = useState("");
   const [authorName, setAuthorName] = useState("");
@@ -14,6 +15,7 @@ export default function LocalLibary(props) {
   //error state for 1st section
   const [errorValue, setErrorValue] = useState(null);
   //Cleaning function after submit
+
   const clearAllInputValues = () => {
     setTitleName("");
     setAuthorName("");
@@ -28,11 +30,12 @@ export default function LocalLibary(props) {
       ...prev,
       {
         id: props.books.length,
+        image: "",
         title: titleName,
         author: authorName,
-        publishedDate: publishedDate,
         category: categoryValue,
         description: descriptionValue,
+        publishedDate: publishedDate,
       },
     ]);
     return clearAllInputValues();
@@ -114,7 +117,9 @@ export default function LocalLibary(props) {
         >
           Published date
         </Input>
-        <Button type="submit">Add Book</Button>
+        <Button type="submit" className={classes["form-btn"]}>
+          Add Book
+        </Button>
         <Input
           type="text"
           id="filter"
