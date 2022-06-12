@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import { BrowserLibrary } from "./components/Library/ApiLibrary/BrowserLibrary";
 import { LocalLibrary } from "./components/Library/LocalLibrary/LocalLibrary";
-
+import { BooksProvider } from "./components/store/BooksProvider";
 const initialBooks = [
   {
     id: 0,
@@ -36,16 +36,18 @@ export function App() {
   }, [books]);
   return (
     <div className="App">
-      <LocalLibrary
-        books={books}
-        setBooks={setBooks}
-        className="local-libary"
-      />
-      <BrowserLibrary
-        books={books}
-        setBooks={setBooks}
-        className="api-libary"
-      />
+      <BooksProvider>
+        <LocalLibrary
+          books={books}
+          setBooks={setBooks}
+          className="local-libary"
+        />
+        <BrowserLibrary
+          books={books}
+          setBooks={setBooks}
+          className="api-libary"
+        />
+      </BooksProvider>
     </div>
   );
 }

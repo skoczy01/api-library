@@ -1,55 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { LocalLibraryItems } from "./LocalLibraryItems/LocalLibraryItems";
 import { Input } from "../../UI/Input";
-import { Button } from "../../UI/Button";
-import { Form } from "../../UI/Form";
-import classes from "./LocalLibrary.module.scss";
-export function LocalLibrary(props) {
-  const [titleName, setTitleName] = useState("");
-  const [authorName, setAuthorName] = useState("");
-  const [publishedDate, setPublishedDate] = useState("");
-  const [categoryValue, setCategoryValue] = useState("");
-  const [descriptionValue, setDescriptionValue] = useState("");
-  const [filterName, setFilterName] = useState("");
-  const [errorValue, setErrorValue] = useState(null);
+import { LocalLibraryForm } from "./LocalLibraryForm";
+import { BooksContext } from "../../store/BooksContext";
 
-  const clearAllInputValues = () => {
-    setTitleName("");
-    setAuthorName("");
-    setPublishedDate("");
-    setCategoryValue("");
-    setDescriptionValue("");
-    setErrorValue("");
-  };
-  const onSubmitFormHandler = () => {
-    props.setBooks((prev) => [
-      ...prev,
-      {
-        id: props.books.length,
-        image: "",
-        title: titleName,
-        author: authorName,
-        category: categoryValue,
-        description: descriptionValue,
-        publishedDate: publishedDate,
-      },
-    ]);
-    return clearAllInputValues();
-  };
-  const onValidateFormHandler = (event) => {
-    event.preventDefault();
-    if (
-      !titleName ||
-      !authorName ||
-      !publishedDate ||
-      !categoryValue ||
-      !descriptionValue
-    ) {
-      return setErrorValue("The form field cannot be empty!");
-    } else {
-      onSubmitFormHandler();
-    }
-  };
+export function LocalLibrary(props) {
+  const [filterName, setFilterName] = useState("");
+  // const [errorValue, setErrorValue] = useState(null);
+  const bookCtx = useContext(BooksContext);
+  console.log(bookCtx.books);
+
   const deleteHandler = (id) => {
     props.setBooks(props.books.filter((book) => book.id !== id));
   };
@@ -60,74 +20,21 @@ export function LocalLibrary(props) {
   return (
     <div className={props.className}>
       <h2>Local Books</h2>
-      <Form onSubmit={onValidateFormHandler}>
-        <Input
-          type="text"
-          id="title"
-          onInputChange={(event) => {
-            setTitleName(event.target.value);
-          }}
-          initialValue={titleName}
-        >
-          Title
-        </Input>
-        <Input
-          type="text"
-          id="author"
-          onInputChange={(event) => {
-            setAuthorName(event.target.value);
-          }}
-          initialValue={authorName}
-        >
-          Author
-        </Input>
-
-        <Input
-          type="text"
-          id="category"
-          onInputChange={(event) => setCategoryValue(event.target.value)}
-          initialValue={categoryValue}
-        >
-          Category
-        </Input>
-        <Input
-          type="text"
-          id="description"
-          onInputChange={(event) => {
-            setDescriptionValue(event.target.value);
-          }}
-          initialValue={descriptionValue}
-        >
-          Description
-        </Input>
-        <Input
-          type="date"
-          id="publishedDate"
-          onInputChange={(event) => {
-            setPublishedDate(event.target.value);
-          }}
-          initialValue={publishedDate}
-        >
-          Published date
-        </Input>
-        <Button type="submit" className={classes["form-btn"]}>
-          Add Book
-        </Button>
-        <Input
-          type="text"
-          id="filter"
-          onInputChange={(event) =>
-            setFilterName(event.target.value.toLowerCase())
-          }
-          placeholder={
-            props.books.length ? "Search by title" : "Library is empty"
-          }
-          disabled={props.books.length ? false : true}
-        >
-          Filter Book
-        </Input>
-      </Form>
-      {errorValue ? errorValue : null}
+      <LocalLibraryForm books={props.books} setBooks={props.setBooks} />
+      <Input
+        type="text"
+        id="filter"
+        onInputChange={(event) =>
+          setFilterName(event.target.value.toLowerCase())
+        }
+        placeholder={
+          props.books.length ? "Search by title" : "Library is empty"
+        }
+        disabled={props.books.length ? false : true}
+      >
+        Filter Book
+      </Input>
+      {/* {errorValue ? errorValue : null} */}
       {props.books.length ? (
         <LocalLibraryItems books={filtersItems} deleteHandler={deleteHandler} />
       ) : (
