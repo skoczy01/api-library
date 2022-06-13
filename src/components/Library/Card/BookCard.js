@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BooksContext } from "../../store/BooksContext";
 import { Button } from "../../UI/Button";
 import classes from "./BookCard.module.scss";
 const initialImage =
@@ -6,6 +7,7 @@ const initialImage =
 const notEnteredValue = (
   <span className={classes["not-entered"]}>Not entered</span>
 );
+
 export function BookCard(props) {
   // if (props.name === "api") {
   //   const book = props.book;
@@ -26,7 +28,7 @@ export function BookCard(props) {
   //   const link = book.link;
   //   const image = book.image;
   // }
-
+  const BooksCtx = useContext(BooksContext);
   return (
     <div className={classes.card}>
       <div className={classes["first-section"]}>
@@ -74,7 +76,7 @@ export function BookCard(props) {
         <Button
           className={classes["card-btn"]}
           onClick={() => {
-            props.deleteHandler(props.id);
+            BooksCtx.removeItem(props.id);
           }}
         >
           Remove

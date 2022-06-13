@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { BooksContext } from "../../../store/BooksContext";
 import { BookCard } from "../../Card/BookCard";
 import classes from "./LocalLibaryItems.module.scss";
 export function LocalLibraryItems(props) {
-  const booksListRender = props.books.map((book) => (
+  const booksCtx = useContext(BooksContext);
+  const books = booksCtx.books;
+  const booksListRender = books.map((book) => (
     <BookCard
       key={book.id}
       id={book.id}
@@ -14,7 +17,6 @@ export function LocalLibraryItems(props) {
       image={book.image}
       description={book.description}
       publishedDate={book.publishedDate}
-      deleteHandler={props.deleteHandler}
       name="local"
     />
   ));

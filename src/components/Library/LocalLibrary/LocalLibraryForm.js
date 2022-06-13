@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Form } from "../../UI/Form";
 import { Input } from "../../UI/Input";
 import { Button } from "../../UI/Button";
 import classes from "./LocalLibrary.module.scss";
+import { BooksContext } from "../../store/BooksContext";
 
 export function LocalLibraryForm(props) {
   const [titleName, setTitleName] = useState("");
@@ -11,9 +12,8 @@ export function LocalLibraryForm(props) {
   const [publishedDate, setPublishedDate] = useState("");
   const [categoryValue, setCategoryValue] = useState("");
   const [descriptionValue, setDescriptionValue] = useState("");
-  const [filterName, setFilterName] = useState("");
   const [errorValue, setErrorValue] = useState(null);
-
+  const booksCtx = useContext(BooksContext);
   const clearAllInputValues = () => {
     setTitleName("");
     setAuthorName("");
@@ -23,19 +23,16 @@ export function LocalLibraryForm(props) {
     setErrorValue("");
   };
   const onSubmitFormHandler = () => {
-    props.setBooks((prev) => [
-      ...prev,
-      {
-        id: props.books.length,
-        image: "",
-        title: titleName,
-        author: authorName,
-        category: categoryValue,
-        description: descriptionValue,
-        publishedDate: publishedDate,
-      },
-    ]);
-
+    booksCtx.addItem({
+      id: booksCtx.books.length,
+      title: titleName,
+      author: authorName,
+      category: categoryValue,
+      description: descriptionValue,
+      publishedDate: publishedDate,
+      image: "",
+      link: "",
+    });
     return clearAllInputValues();
   };
   const onValidateFormHandler = (event) => {
