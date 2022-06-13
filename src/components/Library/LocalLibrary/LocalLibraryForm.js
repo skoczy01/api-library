@@ -5,7 +5,6 @@ import { Input } from "../../UI/Input";
 import { Button } from "../../UI/Button";
 import classes from "./LocalLibrary.module.scss";
 import { BooksContext } from "../../store/BooksContext";
-
 export function LocalLibraryForm(props) {
   const [titleName, setTitleName] = useState("");
   const [authorName, setAuthorName] = useState("");
@@ -13,6 +12,7 @@ export function LocalLibraryForm(props) {
   const [categoryValue, setCategoryValue] = useState("");
   const [descriptionValue, setDescriptionValue] = useState("");
   const booksCtx = useContext(BooksContext);
+
   const clearAllInputValues = () => {
     setTitleName("");
     setAuthorName("");
@@ -95,6 +95,7 @@ export function LocalLibraryForm(props) {
           setPublishedDate(event.target.value);
         }}
         initialValue={publishedDate}
+        max="2022-06-30"
       >
         Published date
       </Input>
