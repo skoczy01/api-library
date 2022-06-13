@@ -30,29 +30,7 @@ export function BrowserLibrary(props) {
     }
     setSearchValue("");
   };
-  const addBookFromApiToLocalBooks = (
-    title,
-    author,
-    category,
-    description,
-    date,
-    image,
-    id,
-    link
-  ) => {
-    props.setBooks((prev) => [
-      ...prev,
-      {
-        id: id,
-        link: link,
-        image: image,
-        title: title,
-        author: author,
-        publishedDate: date,
-        category: category,
-        description: description,
-      },
-    ]);
+  const removeAddedBook = (id) => {
     setBooksFromApi(booksFromApi.filter((book) => book.id !== id));
   };
   return (
@@ -76,10 +54,7 @@ export function BrowserLibrary(props) {
       {!booksFromApi ? (
         <p>Cannot find your entered title, please try again</p>
       ) : (
-        <BrowserItems
-          apiResult={booksFromApi}
-          onAdd={addBookFromApiToLocalBooks}
-        />
+        <BrowserItems apiResult={booksFromApi} onRemove={removeAddedBook} />
       )}
     </div>
   );

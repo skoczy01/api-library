@@ -30,24 +30,24 @@ const initialBooks = () => {
 const booksReducer = (state, action) => {
   if (action.type === "ADD_BOOK") {
     const updatedBooks = state.books.concat(action.book);
-    return {
-      books: updatedBooks,
-    };
+    const existingBookById = state.books.findIndex(
+      (item) => item.id === action.book.id
+    );
+    if (existingBookById === 1) {
+      return {
+        books: state.books,
+      };
+    } else {
+      return {
+        books: updatedBooks,
+      };
+    }
   }
   if (action.type === "REMOVE_BOOK") {
     const updatedBooks = state.books.filter((book) => book.id !== action.id);
     return {
       books: updatedBooks,
     };
-  }
-  if (action.type === "FILTER_BOOK") {
-    const filteredBooks = state.books.filter((book) => {
-      const title = book.title.toLowerCase();
-      title.includes(action.filterName);
-      return {
-        books: filteredBooks,
-      };
-    });
   }
   return initBooksState;
 };
@@ -67,14 +67,10 @@ export const BooksProvider = (props) => {
   const removeItemHandler = (id) => {
     dispatchBooksAction({ type: "REMOVE_BOOK", id: id });
   };
-  const filterItemHandler = (title) => {
-    dispatchBooksAction({ type: "FILTER_BOOK", filterName: title });
-  };
   const bookContext = {
     books: booksState.books,
     addItem: addItemHandler,
     removeItem: removeItemHandler,
-    filterItem: filterItemHandler,
   };
   return (
     <BooksContext.Provider value={bookContext}>

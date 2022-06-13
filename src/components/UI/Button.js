@@ -5,6 +5,7 @@ export function Button(props) {
       type={props.type}
       onClick={props.onClick}
       className={props.className ? props.className : classes.submit}
+      disabled={props.disabled}
     >
       {props.children}
     </button>

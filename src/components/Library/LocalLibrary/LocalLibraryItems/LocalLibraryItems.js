@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
-import { BooksContext } from "../../../store/BooksContext";
+import React from "react";
 import { BookCard } from "../../Card/BookCard";
 import classes from "./LocalLibaryItems.module.scss";
 export function LocalLibraryItems(props) {
-  const booksCtx = useContext(BooksContext);
-  const books = booksCtx.books;
-  const booksListRender = books.map((book) => (
+  const booksListRender = props.filteredItem.map((book) => (
     <BookCard
       key={book.id}
       id={book.id}

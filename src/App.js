@@ -9,7 +9,7 @@ export function App() {
     <div className="App">
       <BooksProvider>
         <LocalLibrary className="local-libary" />
-        {/* <BrowserLibrary className="api-libary" /> */}
+        <BrowserLibrary className="api-libary" />
       </BooksProvider>
     </div>
   );

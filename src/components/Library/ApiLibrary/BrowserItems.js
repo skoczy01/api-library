@@ -2,7 +2,10 @@ import React from "react";
 import { Button } from "../../UI/Button";
 import classes from "../Card/BookCard.module.scss";
 import { BookCard } from "../Card/BookCard";
+import { useContext } from "react";
+import { BooksContext } from "../../store/BooksContext";
 export function BrowserItems(props) {
+  const BooksCtx = useContext(BooksContext);
   const booksListRender = props.apiResult.map((book) => (
     <BookCard
       key={book.id}
@@ -36,16 +39,18 @@ export function BrowserItems(props) {
           const image = book.volumeInfo.imageLinks.thumbnail;
           const link = book.volumeInfo.canonicalVolumeLink;
           const id = book.id;
-          props.onAdd(
-            title,
-            author,
-            category,
-            description,
-            date,
-            image,
-            id,
-            link
-          );
+
+          BooksCtx.addItem({
+            id: id,
+            title: title,
+            author: author,
+            category: category,
+            description: description,
+            publishedDate: date,
+            image: image,
+            link: link,
+          });
+          props.onRemove(id);
         }}
       >
         Add to local libary

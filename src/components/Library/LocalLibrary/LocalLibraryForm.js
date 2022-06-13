@@ -12,7 +12,6 @@ export function LocalLibraryForm(props) {
   const [publishedDate, setPublishedDate] = useState("");
   const [categoryValue, setCategoryValue] = useState("");
   const [descriptionValue, setDescriptionValue] = useState("");
-  const [errorValue, setErrorValue] = useState(null);
   const booksCtx = useContext(BooksContext);
   const clearAllInputValues = () => {
     setTitleName("");
@@ -20,7 +19,6 @@ export function LocalLibraryForm(props) {
     setPublishedDate("");
     setCategoryValue("");
     setDescriptionValue("");
-    setErrorValue("");
   };
   const onSubmitFormHandler = () => {
     booksCtx.addItem({
@@ -38,13 +36,13 @@ export function LocalLibraryForm(props) {
   const onValidateFormHandler = (event) => {
     event.preventDefault();
     if (
-      !titleName ||
-      !authorName ||
+      !titleName.trim() ||
+      !authorName.trim() ||
       !publishedDate ||
-      !categoryValue ||
-      !descriptionValue
+      !categoryValue.trim() ||
+      !descriptionValue.trim()
     ) {
-      return setErrorValue("The form field cannot be empty!");
+      return alert("The form field cannot be empty!");
     } else {
       onSubmitFormHandler();
     }
