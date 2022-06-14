@@ -6,7 +6,6 @@ import { BooksContext } from "../../store/BooksContext";
 
 export function LocalLibrary(props) {
   const [filterName, setFilterName] = useState("");
-
   const bookCtx = useContext(BooksContext);
   const books = bookCtx.books;
 
@@ -25,11 +24,11 @@ export function LocalLibrary(props) {
           setFilterName(event.target.value.toLowerCase().trim());
         }}
         placeholder={books.length ? "Search by title" : "Library is empty"}
-        disabled={books.length ? false : true}
+        disabled={books.length === 0}
       >
         Filter Book
       </Input>
-      {/* {errorValue ? errorValue : null} */}
+
       {books.length ? (
         <LocalLibraryItems filteredItem={filtersItems} />
       ) : (

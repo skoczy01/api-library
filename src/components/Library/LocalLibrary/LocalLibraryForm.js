@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
-
+import { useForm } from "react-hook-form";
 import { Form } from "../../UI/Form";
 import { Input } from "../../UI/Input";
 import { Button } from "../../UI/Button";
 import classes from "./LocalLibrary.module.scss";
 import { BooksContext } from "../../store/BooksContext";
-export function LocalLibraryForm(props) {
+export function LocalLibraryForm() {
   const [titleName, setTitleName] = useState("");
   const [authorName, setAuthorName] = useState("");
   const [publishedDate, setPublishedDate] = useState("");
