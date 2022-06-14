@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { useForm } from "react-hook-form";
 import { Form } from "../../UI/Form";
 import { Input } from "../../UI/Input";
 import { Button } from "../../UI/Button";
@@ -52,6 +51,7 @@ export function LocalLibraryForm() {
       <Input
         type="text"
         id="title"
+        name="title"
         onInputChange={(event) => {
           setTitleName(event.target.value);
         }}

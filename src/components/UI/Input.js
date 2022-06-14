@@ -11,6 +11,7 @@ export function Input(props) {
         placeholder={props.placeholder}
         disabled={props.disabled}
         max={props.max}
+        name={props.name}
       />
     </div>
   );
