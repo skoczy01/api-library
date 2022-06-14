@@ -9,25 +9,6 @@ const notEnteredValue = (
 );
 
 export function BookCard(props) {
-  // if (props.name === "api") {
-  //   const book = props.book;
-  //   const title = book.title;
-  //   const author = book.author;
-  //   const category = book.category;
-  //   const description = book.description;
-  //   const publishedDate = book.publishedDate;
-  //   const link = book.link;
-  //   const image = book.image;
-  // } else {
-  //   const book = props.book;
-  //   const title = book.title;
-  //   const author = book.author;
-  //   const category = book.category;
-  //   const description = book.description;
-  //   const publishedDate = book.publishedDate;
-  //   const link = book.link;
-  //   const image = book.image;
-  // }
   const BooksCtx = useContext(BooksContext);
   return (
     <div className={classes.card}>

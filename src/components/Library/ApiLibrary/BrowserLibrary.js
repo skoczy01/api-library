@@ -16,17 +16,20 @@ export function BrowserLibrary(props) {
       return setApiError("This input cant be empty!");
     } else {
       fetch(API_FETCH)
-        .then((res) => res.json())
-        .then(
-          (result) => {
-            setBooksFromApi(result.items);
-            setApiError("");
-            console.log(result.items);
-          },
-          (error) => {
-            return error;
+        .then((res) => {
+          console.log(res);
+          return res.json();
+        })
+        .then((result) => {
+          setBooksFromApi(result.items);
+          setApiError("");
+          if (!result.totalItems) {
+            setApiError("Error");
           }
-        );
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
     }
     setSearchValue("");
   };

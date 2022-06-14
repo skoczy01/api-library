@@ -41,11 +41,13 @@ export function LocalLibraryForm() {
       !categoryValue.trim() ||
       !descriptionValue.trim()
     ) {
+      clearAllInputValues();
       return alert("The form field cannot be empty!");
     } else {
       onSubmitFormHandler();
     }
   };
+
   return (
     <Form onSubmit={onValidateFormHandler}>
       <Input

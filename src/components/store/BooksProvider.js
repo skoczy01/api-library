@@ -29,15 +29,15 @@ const initialBooks = () => {
 };
 const booksReducer = (state, action) => {
   if (action.type === "ADD_BOOK") {
-    const updatedBooks = state.books.concat(action.book);
-    const existingBookById = state.books.findIndex(
+    const existingBookById = state.books.some(
       (item) => item.id === action.book.id
     );
-    if (existingBookById === 1) {
+    if (existingBookById) {
       return {
         books: state.books,
       };
     } else {
+      const updatedBooks = state.books.concat(action.book);
       return {
         books: updatedBooks,
       };
