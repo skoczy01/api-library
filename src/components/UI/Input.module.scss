@@ -1,41 +1,63 @@
 .inputBox {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 5px 0;
+  margin: 20px 0 0 0;
   width: 310px;
-  color: black;
+  color: white;
+  height: 50px;
+}
 
-  label {
-    font-weight: bold;
-    margin: 0 10px;
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 4px 20px 0;
+  width: 100%;
+}
+
+.cut {
+  background-color: #15172b;
+  border-radius: 10px;
+  height: 20px;
+  left: 20px;
+  position: absolute;
+  top: -20px;
+  transform: translateY(0);
+  transition: transform 200ms;
+  width: 76px;
+}
+
+.placeholder {
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 14px;
+  letter-spacing: 1px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+input:disabled {
+  border: 3px solid rgb(82, 77, 77);
+  background-color: rgb(82, 77, 77);
+  &:hover {
+    cursor: no-drop;
   }
-  input {
-    background-color: transparent;
-    border: 3px solid black;
-    border-radius: 10px;
-    padding: 3px 5px;
-    color: black;
-  }
-  ::-webkit-calendar-picker-indicator {
-    // filter: invert(1);
-  }
-  input:focus,
-  select:focus,
-  textarea:focus,
-  button:focus {
-    outline: none;
-    border: 3px solid #333;
-  }
-  input:disabled {
-    border: 3px solid rgb(82, 77, 77);
-    background-color: rgb(82, 77, 77);
-    &:hover {
-      cursor: no-drop;
-    }
-    &::placeholder {
-      color: #ddd;
-    }
+  &::placeholder {
+    color: #ddd;
   }
 }
 .invalid {

@@ -49,11 +49,16 @@ export function LocalLibraryForm() {
   };
 
   return (
-    <Form onSubmit={onValidateFormHandler}>
+    <Form
+      onSubmit={onValidateFormHandler}
+      titleForm="Welcome"
+      subtitleForm="Let's add your book!"
+    >
       <Input
         type="text"
         id="title"
         name="title"
+        placeholder="Title"
         onInputChange={(event) => {
           setTitleName(event.target.value);
         }}
@@ -64,6 +69,7 @@ export function LocalLibraryForm() {
       <Input
         type="text"
         id="author"
+        placeholder="Author"
         onInputChange={(event) => {
           setAuthorName(event.target.value);
         }}
@@ -98,9 +104,7 @@ export function LocalLibraryForm() {
         }}
         initialValue={publishedDate}
         max="2022-06-30"
-      >
-        Published date
-      </Input>
+      />
       <Button type="submit" className={classes["form-btn"]}>
         Add Book
       </Button>

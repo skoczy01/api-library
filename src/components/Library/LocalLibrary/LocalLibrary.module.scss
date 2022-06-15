@@ -1,23 +1,18 @@
 .form-btn {
-  align-self: center;
-  width: 100px;
-  height: 35px;
-  max-height: 50px;
-  margin: 10px 0;
-  font-size: 0.9rem;
-  font-weight: bold;
-  border-radius: 15px;
-  border-style: none;
-  background-color: saddlebrown;
-  box-shadow: 0px 0px 3px 3px saddlebrown;
-  color: white;
-  transition: 0.2s;
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
   cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  margin-top: 38px;
+  // outline: 0;
+  text-align: center;
+  width: 100%;
+}
 
-  &:hover {
-    background-color: white;
-    box-shadow: 0px 0px 3px 3px #bbb;
-
-    color: black;
-  }
+.submit:active {
+  background-color: #06b;
 }
