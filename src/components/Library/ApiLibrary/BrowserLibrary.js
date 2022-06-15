@@ -17,14 +17,13 @@ export function BrowserLibrary(props) {
     } else {
       fetch(API_FETCH)
         .then((res) => {
-          console.log(res);
           return res.json();
         })
         .then((result) => {
           setBooksFromApi(result.items);
           setApiError("");
           if (!result.totalItems) {
-            setApiError("Error");
+            setApiError("Cannot find your entered title, please try again");
           }
         })
         .catch((error) => {
@@ -55,7 +54,7 @@ export function BrowserLibrary(props) {
       </Form>
       {apiError ? <p>{apiError}</p> : null}
       {!booksFromApi ? (
-        <p>Cannot find your entered title, please try again</p>
+        <p>{apiError}</p>
       ) : (
         <BrowserItems apiResult={booksFromApi} onRemove={removeAddedBook} />
       )}

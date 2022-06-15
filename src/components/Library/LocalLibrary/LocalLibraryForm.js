@@ -104,7 +104,9 @@ export function LocalLibraryForm() {
         }}
         initialValue={publishedDate}
         max="2022-06-30"
-      />
+      >
+        date
+      </Input>
       <Button type="submit" className={classes["form-btn"]}>
         Add Book
       </Button>

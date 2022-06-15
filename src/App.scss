@@ -21,7 +21,7 @@ ul {
   list-style: none;
 }
 body {
-  background-color: black;
+  background-color: #000;
 }
 .App {
   display: flex;
@@ -36,7 +36,8 @@ body {
 
   h2 {
     text-align: center;
-    color: saddlebrown;
+    color: #08d;
+    margin: 1rem 0;
   }
 
   .local-libary {
@@ -78,10 +79,11 @@ body {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: hsla(22, 83%, 61%, 1);
+  background: #000;
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsla(22, 95%, 81%, 1);
+  background: #08d;
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {

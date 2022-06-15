@@ -23,7 +23,7 @@ export function BrowserItems(props) {
         book={book.volumeInfo}
         {...bookInfo}
       >
-        <Button onClick={removeItem}>Add to local libary</Button>
+        <Button onClick={removeItem}>Add to local </Button>
       </BookCard>
     );
   });

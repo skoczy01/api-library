@@ -3,7 +3,7 @@ import { LocalLibraryItems } from "./LocalLibraryItems/LocalLibraryItems";
 import { Input } from "../../UI/Input";
 import { LocalLibraryForm } from "./LocalLibraryForm";
 import { BooksContext } from "../../store/BooksContext";
-
+import { Form } from "../../UI/Form";
 export function LocalLibrary(props) {
   const [filterName, setFilterName] = useState("");
   const bookCtx = useContext(BooksContext);
@@ -17,17 +17,19 @@ export function LocalLibrary(props) {
     <div className={props.className}>
       <h2>Local Books</h2>
       <LocalLibraryForm />
-      <Input
-        type="text"
-        id="filter"
-        onInputChange={(event) => {
-          setFilterName(event.target.value.toLowerCase().trim());
-        }}
-        placeholder={books.length ? "Search by title" : "Library is empty"}
-        disabled={books.length === 0}
-      >
-        Filter Book
-      </Input>
+      <Form subtitleForm="Filter by name">
+        <Input
+          type="text"
+          id="filter"
+          onInputChange={(event) => {
+            setFilterName(event.target.value.toLowerCase().trim());
+          }}
+          placeholder={books.length ? "Search by title" : "Library is empty"}
+          disabled={books.length === 0}
+        >
+          Filter Book
+        </Input>
+      </Form>
 
       {books.length ? (
         <LocalLibraryItems filteredItem={filtersItems} />

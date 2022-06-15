@@ -6,7 +6,8 @@
   width: 300px;
   height: 335px;
   margin: 0.5rem 0.2rem;
-  border: 3px solid black;
+  border: 3px solid #07b;
+  background-color: #07b;
   border-radius: 10px;
 }
 .first-section {
@@ -74,7 +75,7 @@
 }
 span.not-entered {
   display: inline-block;
-  color: saddlebrown;
+  color: #15172b;
   font-weight: bold !important;
 }
 .api-cont {
@@ -111,4 +112,29 @@ span.not-entered {
 
     color: black;
   }
+}
+
+.card-btn {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100px;
+  height: 30px;
+  margin: 28px auto 18px auto;
+  text-align: center;
+  box-shadow: 0px 0px 3px 3px #08d;
+  transition: 0.2s;
+  font-weight: bold;
+}
+.card-btn:hover {
+  background-color: #05d;
+  box-shadow: 0px 0px 3px 3px #05d;
+}
+.card-btn:active {
+  background-color: #04b;
+  box-shadow: 0px 0px 3px 3px #04b;
 }
