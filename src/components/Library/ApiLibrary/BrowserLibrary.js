@@ -3,38 +3,65 @@ import { Form } from "../../UI/Form";
 import { Button } from "../../UI/Button";
 import { Input } from "../../UI/Input";
 import { BrowserItems } from "./BrowserItems";
+import classes from "./LoadingIcon.module.scss";
 export function BrowserLibrary(props) {
-  const [apiError, setApiError] = useState("");
+  const [emptyMessage, setEmptyMessage] = useState("");
   const [booksFromApi, setBooksFromApi] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [searchValue, setSearchValue] = useState("");
-  const onSubmitApiSearchHandler = (event) => {
+  const [error, setError] = useState(null);
+
+  async function onSubmitApiSearchHandler(event) {
     event.preventDefault();
+    setIsLoading(true);
+    setError(null);
 
-    const API_FETCH = `https://books.googleapis.com/books/v1/volumes?q=${searchValue}&download=DOWNLOAD_UNDEFINED&filter=ebooks&langRestrict=pl&libraryRestrict=no-restrict&maxAllowedMaturityRating=MATURE&maxResults=15&orderBy=relevance&printType=BOOKS&projection=FULL&key=${process.env.REACT_APP_API_KEY}`;
+    try {
+      const API_FETCH = `https://books.googleapis.com/books/v1/volumes?q=${searchValue}&download=DOWNLOAD_UNDEFINED&filter=ebooks&langRestrict=pl&libraryRestrict=no-restrict&maxAllowedMaturityRating=MATURE&maxResults=15&orderBy=relevance&printType=BOOKS&projection=FULL&key=${process.env.REACT_APP_API_KEY}`;
 
-    if (!searchValue) {
-      return setApiError("This input cant be empty!");
-    } else {
-      fetch(API_FETCH)
-        .then((res) => {
-          return res.json();
-        })
-        .then((result) => {
-          setBooksFromApi(result.items);
-          setApiError("");
-          if (!result.totalItems) {
-            setApiError("Cannot find your entered title, please try again");
-          }
-        })
-        .catch((error) => {
-          console.log(error.message);
-        });
+      if (!searchValue) {
+        setIsLoading(false);
+        setEmptyMessage("This input cant be empty!");
+        return;
+      } else {
+        const response = await fetch(API_FETCH);
+        if (!response.ok) {
+          throw new Error("Something went wrong!");
+        }
+        const data = await response.json();
+        if (data.totalItems === 0) {
+          setIsLoading(false);
+          setSearchValue("");
+
+          return setError("Not found");
+        }
+        setBooksFromApi(data.items);
+      }
+    } catch (error) {
+      setError(error.message);
     }
+
+    setIsLoading(false);
     setSearchValue("");
-  };
+    setEmptyMessage("");
+  }
   const removeAddedBook = (id) => {
     setBooksFromApi(booksFromApi.filter((book) => book.id !== id));
   };
+
+  let content = null;
+  if (booksFromApi.length > 0) {
+    content = (
+      <BrowserItems apiResult={booksFromApi} onRemove={removeAddedBook} />
+    );
+  }
+  if (error) {
+    content = <p>{error}</p>;
+  }
+
+  if (isLoading) {
+    content = <div className={classes.loader}></div>;
+  }
   return (
     <div className={props.className}>
       <h2>Search GoogleBooks</h2>
@@ -52,12 +79,8 @@ export function BrowserLibrary(props) {
         </Input>
         <Button type="submit">Search</Button>
       </Form>
-      {apiError ? <p>{apiError}</p> : null}
-      {!booksFromApi ? (
-        <p>{apiError}</p>
-      ) : (
-        <BrowserItems apiResult={booksFromApi} onRemove={removeAddedBook} />
-      )}
+      {emptyMessage ? <p>{emptyMessage}</p> : null}
+      {content}
     </div>
   );
 }
