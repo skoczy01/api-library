@@ -6,8 +6,8 @@
   width: 300px;
   height: 335px;
   margin: 0.5rem 0.2rem;
-  border: 3px solid #07b;
-  background-color: #07b;
+  border: 5px solid #09b;
+  background-color: #15172b;
   border-radius: 10px;
 }
 .first-section {
@@ -78,17 +78,6 @@ span.not-entered {
   color: #15172b;
   font-weight: bold !important;
 }
-.api-cont {
-  @media (max-width: 1023px) {
-    max-height: 400px;
-    overflow-y: scroll;
-  }
-  @media (min-width: 1024px) {
-    height: 527px;
-
-    overflow-y: scroll;
-  }
-}
 
 .card-btn {
   align-self: center;
@@ -137,4 +126,16 @@ span.not-entered {
 .card-btn:active {
   background-color: #04b;
   box-shadow: 0px 0px 3px 3px #04b;
+}
+
+.api-cont {
+  @media (max-width: 1023px) {
+    max-height: 400px;
+    overflow-y: scroll;
+  }
+  @media (min-width: 1024px) {
+    width: 70%;
+    height: 527px;
+    overflow-y: scroll;
+  }
 }

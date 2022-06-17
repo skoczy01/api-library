@@ -67,6 +67,8 @@ body {
       flex-basis: 35%;
     }
     @media (max-width: 1023px) {
+      margin-bottom: 4rem;
+      max-height: 900px;
       border-top: 5px solid hsla(249, 67%, 65%, 1);
     }
     h2 {
